@@ -1,4 +1,4 @@
-### SRC20 UTXO Model Specification (Draft)
+## SRC20 UTXO Model Specification (Draft)
 
 Currently, SRC20 uses an account model. To enable Atomic Swaps, a UTXO model will be introduced for SRC20 accounts, while the account model will be retained. Adding the UTXO model will introduce the following new SRC20 operations:
 
@@ -17,9 +17,10 @@ Attaches the amount in the account model to the first non-OP_RETURN UTXO. If no 
 }
 ```
 
-#### Detach (Pending Consideration)
+#### Detach 
 
-1. Detaches all assets from all inputs, transferring them to the account model at the first non-OP_RETURN output address. If no non-OP_RETURN output exists, the assets will either be destroyed, or the transaction will be invalid.
+Detaches all assets from inputs, transferring them to the account model associated with the first non-OP_RETURN output.
+If no valid output exists, the assets are either destroyed or returned to the originating accounts (TBD).
 
 ```xml
 {
@@ -28,10 +29,9 @@ Attaches the amount in the account model to the first non-OP_RETURN UTXO. If no 
 }
 ```
 
-#### UTXO Transfer (Pending Consideration)
+#### UTXO Transfer 
 
-Transfers all assets attached to all inputs to the first non-OP_RETURN output. If no non-OP_RETURN output exists, the assets will either be destroyed, or the transaction will be invalid.
-
+Transfers all assets attached to all inputs to the first non-OP_RETURN output. If no non-OP_RETURN output exists, the assets are either destroyed or returned to the originating accounts(TBD).
 ### Existing Operations
 
 #### Deploy
@@ -70,3 +70,6 @@ Tokens minted will be stored in the account model.
   "amt": "100"
 }
 ```
+
+### Notes
+1. Indexer prioritizes P2WSH-encoded operations, followed by UTXO asset transfers.
