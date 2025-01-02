@@ -29,7 +29,7 @@ If no valid output exists, the assets are either destroyed or returned to the or
 }
 ```
 
-#### UTXO Transfer 
+#### UTXO Model Transfer 
 
 Transfers all assets attached to all inputs to the first non-OP_RETURN output. If no non-OP_RETURN output exists, the assets are either destroyed or returned to the originating accounts(TBD).
 ### Existing Operations
